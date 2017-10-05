@@ -5,6 +5,9 @@ CFLAGS=-g -O3
 # Symbols helpful for understanding the productions
 #   $@ is the production's target
 #   $^ are the production's prerequisites
+#General format
+#target: dependencies
+#	bash command
 
 llDemo: llist.o llDemo.o
 	cc -o $@ $^
