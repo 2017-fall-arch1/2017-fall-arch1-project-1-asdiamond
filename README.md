@@ -60,12 +60,13 @@ $ make clean
 Your implementation should aim to accomplish the following:
 
 Store the names of all the employees in the company.
-This data should be structured using a binary search tree..
-Provide a simple user interface so that a user may:
-Add a new employee name,
-Remove an employee name,
-List all employee names,
-Read and write employee names to and from a file.
-in a manner that preserves the BST's structure.
+ - This data should be structured using a binary search tree..
+ - Provide a simple user interface so that a user may:
+ - Add a new employee name,
+ - Remove an employee name,
+ - List all employee names,
+ - Read and write employee names to and from a file.
+ - in a manner that preserves the BST's structure.
+ 
 Your source code should be logical, well commented, and include a readme file on how to operate the program.  You may collaborate with each other; however, if you obtain a piece of code from an outside source (i.e. anything not written by you) that performs anything more than a trivial mathematical expression, you must document where you found it.  
 
