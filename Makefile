@@ -1,4 +1,4 @@
-all: llDemo
+all: bstdemo.exe
 
 CFLAGS=-g -O3
 
@@ -9,18 +9,19 @@ CFLAGS=-g -O3
 #target: dependencies
 #	bash command
 
-llDemo: llist.o llDemo.o
+bstdemo.exe: bst.o bstdemo.o
 	cc -o $@ $^
 
-llist.o: llist.c llist.h
-	cc -c $(CFLAGS) llist.c
+bst.o: bst.c bst.h
+	cc -c $(CFLAGS) bst.c
 
-llDemo.o: llDemo.c llist.h
-	cc -c $(CFLAGS) llDemo.c
+bstdemo.o: bstdemo.c bst.h
+	cc -c $(CFLAGS) bstdemo.c
 
 clean:
-	rm -f *.o llDemo
+	rm -f *.o bstdemo.exe
+	rm -f *.out
 
-demo: llDemo
-	(echo first; echo "second line"; echo "third and last") | ./llDemo
+demo: bstdemo.exe
+	(echo first; echo "second line"; echo "third and last") | ./bstdemo.exe
 

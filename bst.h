@@ -1,7 +1,6 @@
 #ifndef llist_included		/* prevent multiple inclusion */
 #define llist_included
 
-
 /* a BST node with item */
 typedef struct node {
   struct node *leftChild; 

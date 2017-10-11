@@ -1,7 +1,7 @@
 #include <stdio.h>		/* for printf */
 #include <stdlib.h>		/* for free() */
 #include <string.h> 		/* for strlen */
-#include "llist.h"		/* for list operations */
+#include "bst.h"		/* for list operations */
 
 
 /* read no more than limit chars into s, return #chars read.  Doesn't include trailing \n */
@@ -22,6 +22,8 @@ int main()
 {
   char buf[100];
   BinarySearchTree *bst = BSTAlloc();	/* make empty bst */
+	BSTInsert(bst, "Hello");
+	printBST(bst, 0);
 
   //llPrint(lp, "List contents, prior to reading input:");
 
