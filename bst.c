@@ -64,30 +64,22 @@ void BSTInsert(BinarySearchTree *bst, char *s)
 	a->leftChild = NULL;
 	a->rightChild = NULL;
 	
-	addNode(bst->root, a);//add node to bst
+	bst->root = addNode(bst->root, a);//add node to bst
   	//doCheck(lp);
 }
 
 //TODO test this implementation...
-void addNode(Node *root, Node *a){
+Node* addNode(Node *root, Node *a){
 	if(root == NULL){
-		root = a;//a becomes root
-		return;
+		return a;
 	}
 	int cmpval = strcmp(a->str, root->str);
 	if(0 > cmpval) {//a < root
-		addNode(root->leftChild, a);
+		return addNode(root->leftChild, a);
 	}
 	else {//a >= root
-		addNode(root->rightChild, a);
+		return addNode(root->rightChild, a);
 	}
-}
-
-/* print list membership.  Prints default mesage if message is NULL */
-void printBST(BinarySearchTree *bst, char *msg)
-{
-	puts(msg ? msg :"BST contents\n");
-	printInorder(bst->root);
 }
 
 /* helper, prints bst in order node by node */

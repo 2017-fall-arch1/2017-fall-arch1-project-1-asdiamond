@@ -29,14 +29,11 @@ void BSTMakeEmpty(BinarySearchTree *bst);
 /* Insert a copy of str into bst */
 void BSTInsert(BinarySearchTree *bst, char *s);
 
-/* Prints the bst... */
-void printBST(BinarySearchTree *bst, char *msg);
-
-/* helper to print bst inorder */
+/* print bst inorder */
 void printInorder(Node *root);
 
 /* helper to add node to bst */
-void addNode(Node *root, Node *a);
+Node* addNode(Node *root, Node *a);
 
 //TODO reimplement this for bst...
 /* check llist consistency, always returns zero */
