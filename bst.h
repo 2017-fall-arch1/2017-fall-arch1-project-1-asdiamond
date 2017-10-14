@@ -24,7 +24,7 @@ BinarySearchTree *BSTAlloc();
 void BSTFree(BinarySearchTree *bst);
 
 /* Delete all elements off list */
-void BSTMakeEmpty(BinarySearchTree *bst);
+void BSTMakeEmpty(Node *bst);
 
 /* Insert a copy of str into bst */
 void BSTInsert(BinarySearchTree *bst, char *s);
@@ -37,6 +37,9 @@ void printInorder(Node *root, int space);
 
 /* helper to add node to bst */
 Node* addNode(Node *root, Node *a);
+
+/* remove node from bst */
+void removeBST(BinarySearchTree *bst, char *s);
 
 //TODO reimplement this for bst...
 /* check llist consistency, always returns zero */

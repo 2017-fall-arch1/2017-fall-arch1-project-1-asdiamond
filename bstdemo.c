@@ -19,22 +19,22 @@ int gets_n(char *s, int limit)
 
 int main()
 {
+	printf("Welcome to the Aleksandr Diamond personnel management system\n");
+	printf("Please enter employee names less than 100 chars long\n");
+
   	char buf[100];
 	BinarySearchTree *bst = BSTAlloc();	/* make empty bst */
 
-  	while (gets_n(buf, 100))	/* build list */
+	printf("Enter a name or q to quit:\n");
+  	while (gets_n(buf, 100)){	/* build list */
+		printf("Enter a name or q to quit:\n");
+		if(strcmp(buf, "q") == 0)//buf == q
+			break;
   		BSTInsert(bst, buf);
+	}
 
+	printf("Here are the bst contents:\n");
 	pprintBST(bst);
-
-  //llPrint(lp, "List contents, after building list:");
-
-  //llMakeEmpty(lp);
-
-  //printf("After emptying the list...");
-  //llPrint(lp, 0);		/* default message */
-
-  //llFree(lp);
 
   return 0;
 }

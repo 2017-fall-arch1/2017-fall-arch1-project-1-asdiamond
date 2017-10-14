@@ -17,34 +17,28 @@ BinarySearchTree *BSTAlloc()
   return bst;
 }
 
-/* recycle a list, discarding all items it contains */
+/* recycle a bst, discarding all items it contains */
 void BSTFree(BinarySearchTree *bst)
 {
-	printf("Called BST free\n");
   //doCheck(lp);
-  BSTMakeEmpty(bst);
+  BSTMakeEmpty(bst->root);
   free(bst);
 }
 
-/* Delete all elements off of the list */
-void BSTMakeEmpty(BinarySearchTree *bst)
+/* Delete all elements off of the bst */
+void BSTMakeEmpty(Node *root)
 {
-/*
-  LLItem *current = lp->first, *next;
-  doCheck(lp);
-  while (current) {
-    next = current->next;
-    free(current->str);
-    free(current);
-    current = next;
-  }
-  lp->first = lp->last = 0;	/* list is empty */
- // doCheck(lp);
-	printf("Called BSTMakeEmpty\n");
+	//my take is to process left, right then node...
+	if(root == NULL) return;
+	BSTMakeEmpty(root->leftChild);
+	BSTMakeEmpty(root->rightChild);
+	//process node after both left and right have been KILLED
+	free(root->str);
+	free(root);
+	return;
 }
   
-/* append a copy of str to end of list */
-//TODO this is gonna be a little more complicated for bst...
+/* inserts a node containing string s into the bst */
 void BSTInsert(BinarySearchTree *bst, char *s)
 {
 	int len;
@@ -67,11 +61,11 @@ void BSTInsert(BinarySearchTree *bst, char *s)
   	//doCheck(lp);
 }
 
-//TODO test this implementation...
 Node* addNode(Node *root, Node *a){
 	if(root == NULL){
 		return a;
 	}
+	//compare to node and decide where to add it...
 	int cmpval = strcmp(a->str, root->str);
 	if(0 > cmpval) {//a < root
 		root->leftChild = addNode(root->leftChild, a);
@@ -82,6 +76,7 @@ Node* addNode(Node *root, Node *a){
 	return root;
 }
 
+/* pprints the bst using inorder traversal... uses printInorder */
 void pprintBST(BinarySearchTree *bst){
 	printInorder(bst->root, 0);
 }
@@ -89,17 +84,23 @@ void pprintBST(BinarySearchTree *bst){
 /* helper, prints bst in order node by node */
 void printInorder(Node *root, int space){
 	if(root == NULL) return;
-	space += 2;//2 is distance between levels...
+	space += 4;//2 is distance between levels...
 	printInorder(root->rightChild, space);
 	
 	//print current node
 	printf("\n");
 	int i;
-	for(i = 2; i < space; i++)//remember 2 is the distance between levels...
+	for(i = 4; i < space; i++)//remember 2 is the distance between levels...
 		printf(" ");
 	printf("%s\n", root->str);
 	printInorder(root->leftChild, space);
 }
+
+/* Removes a node containing *s from tree */
+void removeBST(BinarySearchTree *bst, char *s){
+	printf("called remove with %s\n", s);
+}
+
 
 /* check llist consistency */
 //TODO reimplement this to make sure bst fulfills its max min stuff.
