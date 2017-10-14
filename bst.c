@@ -47,7 +47,6 @@ void BSTMakeEmpty(BinarySearchTree *bst)
 //TODO this is gonna be a little more complicated for bst...
 void BSTInsert(BinarySearchTree *bst, char *s)
 {
-	printf("Called BST Insert\n");
 	int len;
 	char *scopy;
 	Node *a;
@@ -75,19 +74,31 @@ Node* addNode(Node *root, Node *a){
 	}
 	int cmpval = strcmp(a->str, root->str);
 	if(0 > cmpval) {//a < root
-		return addNode(root->leftChild, a);
+		root->leftChild = addNode(root->leftChild, a);
 	}
 	else {//a >= root
-		return addNode(root->rightChild, a);
+		root->rightChild = addNode(root->rightChild, a);
 	}
+	return root;
+}
+
+void pprintBST(BinarySearchTree *bst){
+	printInorder(bst->root, 0);
 }
 
 /* helper, prints bst in order node by node */
-void printInorder(Node *root){
+void printInorder(Node *root, int space){
 	if(root == NULL) return;
-	printInorder(root->leftChild);
-    	printf("<%s>\n", root->str);
-	printInorder(root->rightChild);
+	space += 2;//2 is distance between levels...
+	printInorder(root->rightChild, space);
+	
+	//print current node
+	printf("\n");
+	int i;
+	for(i = 2; i < space; i++)//remember 2 is the distance between levels...
+		printf(" ");
+	printf("%s\n", root->str);
+	printInorder(root->leftChild, space);
 }
 
 /* check llist consistency */
