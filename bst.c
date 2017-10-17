@@ -96,9 +96,43 @@ void printInorder(Node *root, int space){
 	printInorder(root->leftChild, space);
 }
 
-/* Removes a node containing *s from tree */
+/* Wrapper method to remove a node containing *s from tree */
 void removeNode(BinarySearchTree *bst, char *s){
-	printf("called remove with %s\n", s);
+	bst->root = removeRec(bst->root, s);
+	printf("Removed %s\n", s);
+}
+
+/* remove method */
+Node* removeRec(Node *root, char *s){
+	if (root == NULL) return root;
+	int cmpval = strcmp(s, root->str);
+	if(0 > cmpval)//s < root
+		root->leftChild = removeRec(root->leftChild, s);
+	else if(0 < cmpval)//s > root
+		root->rightChild = removeRec(root->rightChild, s);
+	//otherwise they are equal, this is the node youre looking for
+	else {
+		if(root->leftChild == NULL) return root->rightChild;
+		else if(root->rightChild == NULL) return root->leftChild;
+	
+		//otherwise node has 2 children :(
+		//promote min from right subtree
+		root->str = min(root->rightChild);
+
+		root->rightChild = removeRec(root->rightChild, s);
+	}
+	return root;
+	
+}
+
+/* finds min in tree */
+char* min(Node *root){
+	char *minval = root->str;	
+	while(root->leftChild != NULL){
+		minval = root->leftChild->str;
+		root = root->leftChild;
+	}
+	return minval;
 }
 
 /* uses preorder traversal serialize a bst to a file */

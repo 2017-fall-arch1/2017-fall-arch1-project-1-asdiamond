@@ -38,8 +38,14 @@ void printInorder(Node *root, int space);
 /* helper to add node to bst */
 Node* addNode(Node *root, Node *a);
 
-/* remove node from bst */
+/* wrapper for remove */
 void removeNode(BinarySearchTree *bst, char *s);
+
+/* remove node from bst */
+Node* removeRec(Node *root, char *s);
+
+/* finds min, helps remove */
+char* min(Node *root);
 
 /* serialize bst to file */
 void serializeBST(BinarySearchTree *bst, FILE *file);

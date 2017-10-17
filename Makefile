@@ -21,7 +21,8 @@ bstdemo.o: bstdemo.c bstdemo.h bst.h
 clean:
 	rm -f *.o bstdemo.exe
 	rm -f *.out
+	rm -f *.bst
 
 demo: bstdemo.exe
-	(echo first; echo "second line"; echo "third and last") | ./bstdemo.exe
+	(echo 1; echo d; echo c; echo f; echo a; echo e; echo g; echo q; echo 2;) | ./bstdemo.exe
 
