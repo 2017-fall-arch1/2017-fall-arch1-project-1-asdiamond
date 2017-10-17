@@ -19,6 +19,7 @@ BinarySearchTree *BSTAlloc()
   return bst;
 }
 
+
 /* recycle a bst, discarding all items it contains */
 void BSTFree(BinarySearchTree *bst)
 {
@@ -63,7 +64,8 @@ void BSTInsert(BinarySearchTree *bst, char *s)
   	//doCheck(lp);
 }
 
-Node* addNode(Node *root, Node *a){
+Node* addNode(Node *root, Node *a)
+{
 	if(root == NULL){
 		return a;
 	}
