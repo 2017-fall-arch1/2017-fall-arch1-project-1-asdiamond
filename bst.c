@@ -97,10 +97,18 @@ void printInorder(Node *root, int space){
 }
 
 /* Removes a node containing *s from tree */
-void removeBST(BinarySearchTree *bst, char *s){
+void removeNode(BinarySearchTree *bst, char *s){
 	printf("called remove with %s\n", s);
 }
 
+void serializeBST(BinarySearchTree *bst, FILE *file){
+	printf("Serializing to file...\n");
+}
+
+BinarySearchTree* deserializeBST(FILE *file){
+	printf("Deserializing\n");
+	return NULL;
+}
 
 /* check llist consistency */
 //TODO reimplement this to make sure bst fulfills its max min stuff.

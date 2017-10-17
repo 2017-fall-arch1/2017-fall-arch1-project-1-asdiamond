@@ -39,7 +39,13 @@ void printInorder(Node *root, int space);
 Node* addNode(Node *root, Node *a);
 
 /* remove node from bst */
-void removeBST(BinarySearchTree *bst, char *s);
+void removeNode(BinarySearchTree *bst, char *s);
+
+/* serialize bst to file */
+void serializeBST(BinarySearchTree *bst, FILE *file);
+
+/* deserialize bst from a file */
+BinarySearchTree* deserializeBST(FILE *file);
 
 //TODO reimplement this for bst...
 /* check llist consistency, always returns zero */
