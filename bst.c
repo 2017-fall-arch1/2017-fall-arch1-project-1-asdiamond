@@ -2,6 +2,8 @@
 #include <stdlib.h> 		/* for malloc */
 #include <assert.h>		/* for assert */
 #include "bst.h"		
+#include "bstdemo.h"//for the gets_n() function
+#define COUNT 10//for the pprint function
 
 int llDoCheck = 1;		/* set true for paranoid consistency checking */
 //a debug flag
@@ -84,13 +86,11 @@ void pprintBST(BinarySearchTree *bst){
 /* helper, prints bst in order node by node */
 void printInorder(Node *root, int space){
 	if(root == NULL) return;
-	space += 4;//2 is distance between levels...
+	space += COUNT;
 	printInorder(root->rightChild, space);
-	
-	//print current node
 	printf("\n");
-	int i;
-	for(i = 4; i < space; i++)//remember 2 is the distance between levels...
+	int i = COUNT;
+	for(; i < space; i++)
 		printf(" ");
 	printf("%s\n", root->str);
 	printInorder(root->leftChild, space);
@@ -101,13 +101,25 @@ void removeNode(BinarySearchTree *bst, char *s){
 	printf("called remove with %s\n", s);
 }
 
+/* uses preorder traversal serialize a bst to a file */
 void serializeBST(BinarySearchTree *bst, FILE *file){
 	printf("Serializing to file...\n");
+	preorderSerialization(bst->root, file);
 }
 
-BinarySearchTree* deserializeBST(FILE *file){
-	printf("Deserializing\n");
-	return NULL;
+void preorderSerialization(Node *root, FILE *file){
+	if(root == NULL) return;
+	fprintf(file, "%s\n" , root->str);//node, left, right
+	preorderSerialization(root->leftChild, file);
+	preorderSerialization(root->rightChild, file);
+	
+}
+
+void deserializeBST(BinarySearchTree *bst, FILE *file){
+	printf("Deserializing bst from file\n");
+	while(gets_n(buf, 100, file)){
+		BSTInsert(bst, buf);
+	}
 }
 
 /* check llist consistency */

@@ -44,8 +44,12 @@ void removeNode(BinarySearchTree *bst, char *s);
 /* serialize bst to file */
 void serializeBST(BinarySearchTree *bst, FILE *file);
 
+/* A simple algorithm for serialization, prints bst preorder 
+into file */
+void preorderSerialization(Node *root, FILE *file);
+
 /* deserialize bst from a file */
-BinarySearchTree* deserializeBST(FILE *file);
+void deserializeBST(BinarySearchTree *bst, FILE *file);
 
 //TODO reimplement this for bst...
 /* check llist consistency, always returns zero */

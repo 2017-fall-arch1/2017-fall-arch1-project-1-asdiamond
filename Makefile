@@ -12,10 +12,10 @@ CFLAGS=-g -O3
 bstdemo.exe: bst.o bstdemo.o
 	cc -o $@ $^
 
-bst.o: bst.c bst.h
+bst.o: bst.c bst.h bstdemo.h
 	cc -c $(CFLAGS) bst.c
 
-bstdemo.o: bstdemo.c bst.h
+bstdemo.o: bstdemo.c bstdemo.h bst.h
 	cc -c $(CFLAGS) bstdemo.c
 
 clean:
