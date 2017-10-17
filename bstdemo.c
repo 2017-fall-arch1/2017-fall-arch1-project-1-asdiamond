@@ -53,12 +53,24 @@ int main()
 		else if(buf[0] == '3'){//option to remove employees
 			printf("Enter employee you want to remove\n");
 			gets_n(buf, 100);
-			printf("Removing employee %s\n", buf);
+			removeNode(bst, buf);
 		}
-		else if(buf[0] == '4')//option to serialize bst to a file
-			printf("You want to serialize, eh?\n");
-		else if(buf[0] == '5')//option to read bst from file
-			printf("You want to deserialize, eh?\n");
+		else if(buf[0] == '4'){//option to serialize bst to a file
+			printf("Enter the filename\n");
+			gets_n(buf, 100);
+			//fopen returns a FILE* to whatever the user entered in the buf.
+			//w opens for writing, it overwrites whatever was there before.
+			FILE *outputf = fopen(buf, "w");
+			serializeBST(bst, outputf);
+			fclose(outputf);
+		}
+		else if(buf[0] == '5'){//option to read bst from file
+			printf("Enter the filename\n");
+			gets_n(buf, 100);
+			FILE *inputf = fopen(buf, "r");
+			BinarySearchTree *b = deserializeBST(inputf);//r is for read
+			fclose(inputf);
+		}
 	}
 
 
